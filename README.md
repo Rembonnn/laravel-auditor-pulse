@@ -6,7 +6,7 @@
 - **Top Model Changes** — which models change most, per event (created, updated, deleted…).
 - **Most Active Users (audited)** — who causes the most audited requests, jobs and commands.
 
-Requires PHP 8.3+, Laravel 12 or 13, Laravel Auditor 3 and Laravel Pulse 1.4+.
+Requires PHP 8.3+, Laravel 12 or 13, Laravel Auditor 3 and Laravel Pulse 1.8+.
 
 ## Installation
 

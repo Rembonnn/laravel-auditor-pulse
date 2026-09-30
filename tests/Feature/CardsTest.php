@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\Blade;
 use Laravel\Pulse\Facades\Pulse;
 use Livewire\Livewire;
 use Rembon\LaravelAuditorPulse\Livewire\ActiveUsers;
@@ -47,6 +46,10 @@ it('shows an empty state', function (string $card): void {
     Livewire::test($card, ['lazy' => false])->assertSee('No results');
 })->with([DeniedAbilities::class, ModelChanges::class, ActiveUsers::class]);
 
-it('registers the cards with Livewire', function (string $name): void {
-    expect(Blade::render("<livewire:{$name} />"))->toContain('wire:name="'.$name.'"');
-})->with(['auditor.denied-abilities', 'auditor.model-changes', 'auditor.active-users']);
+it('registers the cards with Livewire', function (string $name, string $class): void {
+    expect(app('livewire')->new($name))->toBeInstanceOf($class);
+})->with([
+    ['auditor.denied-abilities', DeniedAbilities::class],
+    ['auditor.model-changes', ModelChanges::class],
+    ['auditor.active-users', ActiveUsers::class],
+]);
